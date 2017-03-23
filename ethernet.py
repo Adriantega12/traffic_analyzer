@@ -18,18 +18,26 @@
 
 import struct
 import socket
-import ipv4
 import formatFunctions
 
 class Ethernet:
 	'Ethernet Frame class'
 
 	def __init__(self, rawData):
-		'Unpack ethernet frame'
+		'Unpack Ethernet Frame inside constructor'
 		
 		_recMac, _sendMac, _type = struct.unpack('! 6s 6s H', rawData[ : 14 ])
 
 		self.recMac = formatFunctions.formatMACAddress(_recMac)
 		self.sendMac = formatFunctions.formatMACAddress(_sendMac)
-		self.protocol = socket.htons(_type)
+		self.type = socket.htons(_type)
 		self.ethPayload = rawData[ 14 : ]
+
+	def getInfo(self):
+		'Print the Ethernet Frame information'
+
+		info = "Receiever MAC Address: {}\n".format(self.recMac)
+		info += "Sender MAC Address: {}\n".format(self.sendMac)
+		info += "Type: {}\n".format(self.type)
+
+		return info
