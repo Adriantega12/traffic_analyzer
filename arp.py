@@ -1,19 +1,27 @@
+# ARP Packet
+
+# Contiene el desempaquetamiento de la clase ARP
+# Campos de ARP Packet:
+
+# - Hardware Type: 2 bytes
+# - Protocol Type: 2 bytes
+# - *Hardware Address Length: 1 byte
+# - **Protocol Address Length: 1 byte
+# - Operation Code: 2 bytes
+# - Source Hardware Address: *
+# - Source Protocol Address: **
+# - Target Hardware Addres: *
+# - Target Protocol Address: **
+# Total: 28 - 32
+
+# En esta clase hay que ser un poco cauteloso, específicamente con los campos marcados.
+# Primero se tiene que extraer la longitud de la dirección de hardware y de protocolo y proceder desde ahí.
+# Nada del otro mundo, pero aún así. Ya sabiendo esto se procede como siempre.
+# La clase de momento está incompleto puesto que debería tomar en cuenta cuando es IPv4 o IPv6,
+# algún día haré una solución elegante, hoy no es ese día.
+
 import struct
 import formatFunctions
-
-"""
-ARP Packet fields
-Hardware Type: 2 bytes
-Protocol Type: 2 bytes
-*Hardware Address Length: 1 byte
-**Protocol Address Length: 1 byte
-Operation Code: 2 bytes
-Source Hardware Address: *
-Source Protocol Address: **
-Target Hardware Addres: *
-Target Protocol Address: **
-Total: 28 - 32
-"""
 
 class ARP:
 	'ARP Packet class:'

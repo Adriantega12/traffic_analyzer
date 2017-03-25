@@ -2,9 +2,10 @@
 
 # Contiene el desempaquetamiento de la clase Ethernet.
 # La longitud de los campos de Ethernet son como siguen:
-# Receiver MAC Address: 6 bytes
-# Sender MAC Address: 6 bytes
-# Type: 2 bytes
+
+# - Receiver MAC Address: 6 bytes
+# - Sender MAC Address: 6 bytes
+# - Type: 2 bytes
 
 # Ninguno de los campos recibe algún tratamiento de bits. Si acaso el campo "Type" que pasa por htons 
 # para realizar un cambio en el orden de los octetos. Si lee 0x0800 para decir que es IPv4 entonces lo 

@@ -1,3 +1,28 @@
+# IPv4 Header class
+
+# Contiene el desempaquetamiento de la clase IPv4.
+# Campos de IPv4 Header:
+
+# - Version: 4 bits
+# - Header Length: 4 bits
+# - Type of Service: 8 bits
+# - Total Length: 16 bits
+# - Identification: 16 bits
+# - IP Flags: 3 bits (1 para c/u)
+# 	- x: Reserved
+# 	- D: Do Not Fragment
+# 	- M: More moreFragments
+# - Fragment Offset: 13 bits
+# - Time to Live: 8 bits
+# - Protocol: 8 bits
+# - Header Checksum: 16 bits
+# - Source Address: 32 bits
+# - Destination Addres: 32 bits
+# - Opciones: Debe pesar la diferencia entre hlen y la suma de todos los otros campos. (HLen - 160)
+
+# Hay mejores soluciones para el tratamiento de bits dado a todo esto. 
+# Sobre todo para IP Flags y FragOffset.
+
 import struct
 import formatFunctions
 
