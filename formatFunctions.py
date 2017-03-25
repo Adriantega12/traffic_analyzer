@@ -1,8 +1,13 @@
 def formatIPv4(address):
-	'Return properly formatted IPv4 Address. I.E. 192.168.0.0'
+	'Get properly formatted IPv4 Address.'
 	return '.'.join( map( str, address ) )
 
+def formatIPv6(address):
+	'Get properly formatted IPv6 Address.'
+	rawBytesStr = map('{:04x}'.format, address)	
+	return ':'.join(rawBytesStr).upper()
+
 def formatMACAddress(address):
-	'Format to readable Mac Address'
+	'Get properly formatted MAC Address'
 	rawBytesStr = map('{:02x}'.format, address)		
 	return ':'.join(rawBytesStr).upper()

@@ -36,8 +36,8 @@ class Ethernet:
 	def getInfo(self):
 		'Print the Ethernet Frame information'
 
-		info = "Receiever MAC Address: {}\n".format(self.recMac)
-		info += "Sender MAC Address: {}\n".format(self.sendMac)
-		info += "Type: {}\n".format(self.type)
+		info = 'Receiever MAC Address: {}\n'.format(self.recMac)
+		info += 'Sender MAC Address: {}\n'.format(self.sendMac)
+		info += 'Type: {}\n'.format(self.type)
 
 		return info
