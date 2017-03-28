@@ -22,3 +22,8 @@ class ICMPv6:
 		self.code = _code
 		self.checksum = _checksum
 		self.messageBody = ipv6Payload[ 4 : ]
+
+	def getInfo(self):
+		info = 'Type: {} Code: {} Checksum: {}'.format(
+				self.type, self.code, self.checksum)
+		return info
