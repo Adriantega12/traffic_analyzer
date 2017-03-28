@@ -52,3 +52,15 @@ class ARP:
 		self.srcProtoAddr = formatFunctions.formatIPv4(_srcProtoAddr)
 		self.targetHardAddr = formatFunctions.formatMACAddress(_targetHardAddr)
 		self.targetProtoAddr = formatFunctions.formatIPv4(_targetProtoAddr)
+
+	def getInfo(self):
+		info = 'Hardware Type: {} Protocol Type: {}\n'.format(
+				self.hardType, self.protoType)
+		info += 'Hardware Address Length: {} Prototype Address Length: {}\n'.format(
+				self.hardAddrLength, self.protoAddrLength)
+		info += 'Operation Code: {}\n'.format(self.opCode)
+		info += 'Source Hardware Address: {}\nSource Protocol Address: {}\n'.format(
+				self.srcHardAddr, self.srcProtoAddr)
+		info += 'Target Hardware Address: {}\nTarget Protocol Address: {}\n'.format(
+				self.targetHardAddr, self.targetProtoAddr)
+		return info;

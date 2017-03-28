@@ -4,7 +4,9 @@ import textwrap
 
 import ethernet
 import ipv4
+import icmpv4
 import ipv6
+import icmpv6
 import arp
 
 def main():
@@ -25,35 +27,24 @@ def main():
 				
 				ipv4Packet = ipv4.IPv4( getattr(eth, 'ethPayload') )
 
-				# print ('IPv4 Datagram:')
-				# print ('Version: {}, Header Length {}\
-				# 	\nType of Service: {},Total Length: {}, ID: {}\
-				# 	\nDo Not Fragment: {}, More Fragments {}, Frag Offset: {}\
-				# 	\nTime To Live: {}, Protocol: {}, Header Checksum: {}\
-				# 	\nSource IP: {} Destination IP: {}\n'.format(
-				# 	getattr(ipv4Packet, 'version'), getattr(ipv4Packet, 'headerLength'), 
-				# 	getattr(ipv4Packet, 'typeOfService'), getattr(ipv4Packet, 'totalLength'), 
-				# 	getattr(ipv4Packet, 'id'), getattr(ipv4Packet, 'doNotFragment'), 
-				# 	getattr(ipv4Packet, 'moreFragments'), getattr(ipv4Packet, 'fragOffset'),
-				# 	getattr(ipv4Packet, 'timeToLive'), getattr(ipv4Packet, 'protocol'),
-				# 	getattr(ipv4Packet, 'headerChecksum'), getattr(ipv4Packet, 'srcAddress'),
-				# 	getattr(ipv4Packet, 'destAddress') ) )
+				print ('IPv4 Datagram:')
+				print (ipv4Packet.getInfo())
+
+				if (getattr(ipv4Packet, 'protocol') == 1):
+					'Is ICMPv4'
+
+					icmpv4Packet = icmpv4.ICMPv4( getattr(ipv4Packet, 'ipv4Payload') )
+
+					print('ICMPv4 Packet:')
+					print(icmpv4Packet.getInfo())
 
 			elif (getattr(eth, 'type') == 1544):
 				'Is ARP'
 
 				arpPacket = arp.ARP( getattr(eth, 'ethPayload') )
 
-				# print ('ARP Packet:')
-				# print ('Hardware Type: {}, Protocol Type: {}\nHardware Length: {}, Protocol Length: {}\
-				# 	\nOperation Code: {}\
-				# 	\nSender Hardware Address: {}\nSender Protocol Address: {}\
-				# 	\nTarget Hardware Address: {}\nTarget Protocol Address: {}\n'.format(
-				# 	getattr(arpPacket, 'hardType'), getattr(arpPacket, 'protoType'),
-				# 	getattr(arpPacket, 'hardAddrLength'), getattr(arpPacket, 'protoAddrLength'),
-				# 	getattr(arpPacket, 'opCode'), getattr(arpPacket, 'srcHardAddr'),
-				# 	getattr(arpPacket, 'srcProtoAddr'), getattr(arpPacket, 'targetHardAddr'),
-				# 	getattr(arpPacket, 'targetProtoAddr') ) )
+				print ('ARP Packet:')
+				print (arpPacket.getInfo())
 
 			elif (getattr(eth, 'type') == 56710):
 				'Is IPv6'
@@ -63,6 +54,13 @@ def main():
 				print('IPv6 Packet:')
 				print(ipv6Packet.getInfo())
 
+				if (getattr(ipv6Packet, 'nextHeader') == 58):
+					'Is ICMPv6'
+
+					icmpv6Packet = icmpv6.ICMPv6( getattr(ipv6Packet, 'ipv6Payload') )
+
+					print('ICMPv6 Packet:')
+					print(icmpv6Packet.getInfo())
 
 
 main()

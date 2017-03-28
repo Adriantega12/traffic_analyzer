@@ -32,7 +32,7 @@ class IPv6:
 
 		self.getVerTrafClassAndFlowLabel(ethPayload[0 : 4])
 
-		_payloadLen, _nxt, _hop, _srcAddr, _destAddr = struct.unpack('! H c B 16s 16s', ethPayload[4 : 40])
+		_payloadLen, _nxt, _hop, _srcAddr, _destAddr = struct.unpack('! H B B 16s 16s', ethPayload[4 : 40])
 		
 		self.payloadLength = _payloadLen
 		self.nextHeader = _nxt

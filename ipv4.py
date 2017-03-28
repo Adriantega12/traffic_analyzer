@@ -95,5 +95,14 @@ class IPv4:
 						  + ( ( ethBytes[1] & 2) 	>> 1 ) 	* 2
 						  +   ( ethBytes[1] & 1) )
 
+	def getInfo(self):
+		info = 'Version: {} HLen: {} ToS: {} TLen: {}\n'.format(
+				self.version, self.headerLength, self.typeOfService, self.totalLength)
+		info += 'ID: {} IP Flags - D: {} M: {} Fragment Offset: {}\n'.format(
+				self.id, self.doNotFragment, self.moreFragments, self.fragOffset)
+		info += 'Time to Live: {} Protocol: {} Checksum: {}\n'.format(
+				self.timeToLive, self.protocol, self.headerChecksum)
+		info += 'Source Address: {}\nDestination Address: {}\n'.format(
+				self.srcAddress, self.destAddress)
 
-		
+		return info;

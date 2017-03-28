@@ -18,5 +18,10 @@ class ICMPv4:
 
 		self.icmpType = _icmpType
 		self.code = _code
-		self.checksum = checksum
-		self.payload = data[ 4 : ]
+		self.checksum = _checksum
+		self.payload = ipv4Payload[ 4 : ]
+
+	def getInfo(self):
+		info = 'Type: {} Code: {} Checksum: {}\n'.format(
+				self.icmpType, self.code, self.checksum)
+		return info
