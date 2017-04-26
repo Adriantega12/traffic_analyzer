@@ -1,6 +1,6 @@
-# TCPv4 Segment Class
+# TCP Segment Class
 
-# Contiene el desempaquetamiento de la clase TCPv4.
+# Contiene el desempaquetamiento de la clase TCP.
 
 # Los campos de TCPv4 son los siguientes:
 #  - Source Port: 2 bytes
@@ -23,13 +23,13 @@
 #  - Urgent Pointer: 2 bytes
 #  - Total: 20 bytes
 
-class TCPv4:
+class TCP:
 	'TCP Segment class'
 
-	def __init__(self, ipv4Payload):
-		'Unpack IPv4 Payload'
+	def __init__(self, ipPayload):
+		'Unpack IP Payload'
 		_srcPort, _destPort, _seqNum, _ackNum, _offsetRes, _tcpFlags, \
-		_window, _checksum, _urgPointer = struct.unpack("! H H L L B B H H H")
+		_window, _checksum, _urgPointer = struct.unpack("! H H L L B B H H H", ipPayload[ : 20 ])
 
 		self.srcPort = _srcPort
 		self.destPort = _destPort
