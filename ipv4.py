@@ -23,6 +23,10 @@
 # Hay mejores soluciones para el tratamiento de bits dado a todo esto. 
 # Sobre todo para IP Flags y FragOffset.
 
+# Campos de Protocol implementados
+# - ICMP = 0x01
+# - TCP = 0x06
+
 import struct
 import formatFunctions
 

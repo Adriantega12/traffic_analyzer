@@ -40,7 +40,8 @@ class ARP:
 												  _hardAddrLength, _protoAddrLength)
 		(_srcHardAddr, _srcProtoAddr, 
 			_targetHardAddr, _targetProtoAddr) = struct.unpack( unpackString, 
-												 ehtPayload[ 8 : 8 + (2 *_hardAddrLength + 2 *_protoAddrLength) ] )
+												 ehtPayload[ 8 : 8 + (2 * _hardAddrLength + 
+												 					  2 * _protoAddrLength) ] )
 
 
 		self.hardType = _hardType

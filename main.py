@@ -1,13 +1,14 @@
 import socket
 import struct
 import textwrap
-
 import ethernet
 import ipv4
 import icmpv4
 import ipv6
 import icmpv6
 import arp
+import tcp
+import udp
 
 def main():
 	op = input('¿Iniciar ciclo de captura? (S/N)')
@@ -38,6 +39,22 @@ def main():
 					print('ICMPv4 Packet:')
 					print(icmpv4Packet.getInfo())
 
+				elif (getattr(ipv4Packet, 'protocol') == 6):
+					'Is TCP'
+
+					tcpSegment = tcp.TCP( getattr(ipv4Packet, 'ipv4Payload') )
+
+					print ('TCP Segment:')
+					print (tcpSegment.getInfo())
+
+				elif (getattr(ipv4Packet, 'protocol') == 17):
+					'Is UDP'
+
+					udpSegment = udp.UDP( getattr(ipv4Packet, 'ipv4Payload') )
+
+					print ('UDP Segment:')
+					print (udpSegment.getInfo())
+
 			elif (getattr(eth, 'type') == 1544):
 				'Is ARP'
 
@@ -62,5 +79,19 @@ def main():
 					print('ICMPv6 Packet:')
 					print(icmpv6Packet.getInfo())
 
+				elif (getattr(ipv6Packet, 'nextHeader') == 6):
+					'Is TCP'
+					tcpSegment = tcp.TCP( getattr(ipv6Packet, 'ipv6Payload') )
+
+					print ('TCP Segment:')
+					print (tcpSegment.getInfo())
+
+				elif (getattr(ipv6Packet, 'nextHeader') == 17):
+					'Is UDP'
+					
+					udpSegment = udp.UDP( getattr(ipv6Packet, 'ipv6Payload') )
+
+					print ('UDP Segment:')
+					print (udpSegment.getInfo())
 
 main()
