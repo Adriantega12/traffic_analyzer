@@ -77,5 +77,6 @@ class TCP:
 				self.window )
 		info += 'Urgent Pointer: {}\n'.format(
 				self.urgPointer )
+		info += 'Payload: ' + str(self.payload) + '\n'
 
 		return info

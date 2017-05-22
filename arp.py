@@ -23,8 +23,20 @@
 import struct
 import formatFunctions
 
+ARP_OPCODE_TABLE = {
+					1 : "ARP Request",
+					2 : "ARP Reply",
+					3 : "RARP Request",
+					4 : "RARP Reply",
+					5 : "DRARP Request",
+					6 : "DRARP Reply",
+					7 : "DRARP Error",
+					8 : "InARP Request",
+					9 : "InARP Reply"
+					}
+
 class ARP:
-	'ARP Packet class:'
+	'ARP Message class:'
 
 	def __init__(self, ehtPayload):
 		'Unpack ARP packet'
@@ -59,7 +71,7 @@ class ARP:
 				self.hardType, self.protoType)
 		info += 'Hardware Address Length: {} Prototype Address Length: {}\n'.format(
 				self.hardAddrLength, self.protoAddrLength)
-		info += 'Operation Code: {}\n'.format(self.opCode)
+		info += 'Operation Code: {} Message Type: {}\n'.format(self.opCode, ARP_OPCODE_TABLE[self.opCode])
 		info += 'Source Hardware Address: {}\nSource Protocol Address: {}\n'.format(
 				self.srcHardAddr, self.srcProtoAddr)
 		info += 'Target Hardware Address: {}\nTarget Protocol Address: {}\n'.format(

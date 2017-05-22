@@ -14,7 +14,10 @@ def formatIPv6(address):
 		i += 1
 
 	cleanBlocks(listBytes)
-	return ':'.join(listBytes)
+	pointFormatStr = ':'.join(listBytes)
+	cuttedStr = cutZeroes(pointFormatStr)
+
+	return cuttedStr
 
 def cleanSection(section):
 	'Clean a section of the IPv6 address (deprepend zeroes)'
@@ -52,7 +55,21 @@ def cleanBlocks(listBytes):
 
 		i += 1
 
-	print(triplets)
+def cutZeroes(pointFormatted):
+	'Get xxxx:0:0:0:x to xxxx::x'
+	newStr = ""
+	i = 0
+	isCut = False
+	while (i < len(pointFormatted)):
+		if (pointFormatted[i] == ':' and pointFormatted[i + 1] == '0' and not isCut):
+			isCut = True
+			while (pointFormatted[i] == ':' and pointFormatted[i + 1] == '0'):
+				i = i + 2
+			newStr = newStr + ':'
+		newStr = newStr + pointFormatted[i]
+		i = i + 1
+
+	return newStr
 
 def formatMACAddress(address):
 	'Get properly formatted MAC Address'

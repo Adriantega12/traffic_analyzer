@@ -16,4 +16,5 @@ class UDP:
 	def getInfo(self):
 		info = 'Source Port: {} Destination Port: {}\n'.format(self.srcPort, self.destPort)
 		info += 'Length: {}\n'.format(self.length)
+		info += 'Payload: ' + str(self.payload) + '\n'
 		return info
