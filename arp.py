@@ -38,6 +38,18 @@ ARP_OPCODE_TABLE = {
 class ARP:
 	'ARP Message class:'
 
+	seARP_OPCODE_TABLE = {
+					1 : "ARP Request",
+					2 : "ARP Reply",
+					3 : "RARP Request",
+					4 : "RARP Reply",
+					5 : "DRARP Request",
+					6 : "DRARP Reply",
+					7 : "DRARP Error",
+					8 : "InARP Request",
+					9 : "InARP Reply"
+					}
+
 	def __init__(self, ehtPayload):
 		'Unpack ARP packet'
 
@@ -77,3 +89,6 @@ class ARP:
 		info += 'Target Hardware Address: {}\nTarget Protocol Address: {}\n'.format(
 				self.targetHardAddr, self.targetProtoAddr)
 		return info;
+
+	def getMessage(self):
+		return ARP_OPCODE_TABLE[self.opCode]
