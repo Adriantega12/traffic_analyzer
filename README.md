@@ -12,6 +12,7 @@
 - Insertar la contraseña del super usuario. (De ser necesario)
 #### Utilizar el programa
 - El programa preguntará si desea iniciar la captura, usted responderá con "S" para iniciar la captura, de lo contrario, insertar "N". El programa terminará su ejecución en el segundo caso.
+- Seguido, verá los resultados del tráfico de red que pasen por su sistema.
 #### Salir del programa
 - Cuando desee que el programa pare, puede interrumpirlo con `Ctrl + C`, así el programa responderá con una salida deseada.
 
