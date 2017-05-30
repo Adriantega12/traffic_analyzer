@@ -13,7 +13,7 @@
 - Cuando desee que el programa pare, puede interrumpirlo con `Ctrl + C`, así el programa responderá con una salida deseada.
 
 ### TO-DO LIST:
-[x] Crear base para expander programa.
-[x] Crear documentación de programa.
-[ ] Crear una forma de filtrar la salida del programa. (Mediante banderas de entrada, probablemente)
-[ ] Crear una forma de monitoreo extenso. Esto puede hacerse temporalmente dirigiendo la salida al STDOUT del programa con `>>nombre_archivo.txt`
+- [x] Crear base para expander programa.
+- [x] Crear documentación de programa.
+- [ ] Crear una forma de filtrar la salida del programa. (Mediante banderas de entrada, probablemente)
+- [ ] Crear una forma de monitoreo extenso. Esto puede hacerse temporalmente dirigiendo la salida al STDOUT del programa con `>>nombre_archivo.txt`
